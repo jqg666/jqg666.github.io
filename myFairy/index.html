@@ -119,11 +119,14 @@
      <div class="shik">
       <span>在浩瀚的宇宙中,我们能够相遇,我是何其的幸运,我会竭尽所能用一生去守护我天空中最亮的星!</span><br>
 
-     <span class="left">---蒋庆高</span>
+     <span class="left">---蒋</span>
      <input type="button" value="园,点这里" id='dianxia'> 
      </div>
                  
  </div>
+<audio controls="controls" autoplay="autoplay" id="mp3Btn" style="display: none;">
+  <source src="img/yekongxing.mp3" type="audio/mp3" />
+</audio>
     <script src="http://static2.51fanli.net/common/libs/headjs/head.load.min.js"></script>    
     <script>
          setTimeout(function () {
@@ -131,10 +134,23 @@
                     "http://static2.51fanli.net/common/js/base.js",
                     "js/index.js"
                 ]);
+             
+ $(document).one('WeixinJSBridgeReady', function () {
+    var audio = document.getElementById("mp3Btn");
+    audio.play(); //执行一次
+    audio.setAttribute('src', 'img/shake.mp3'); // 替换src
+    audio.load();
+})
+// 监听摇晃事件简化版
+              document.getElementById("mp3Btn").play(); 
+window.addEventListener('devicemotion', function () {
+    document.getElementById("mp3Btn").play(); // 成功播放
+}, false);
+
             }, 10);
 
 
     </script>
-    <audio src='img/yekongxing.mp3' controls autoplay loop class="music"></audio>
+   
 </body>
 </html>
