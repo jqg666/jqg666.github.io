@@ -20,5 +20,16 @@
         $('.cover').hide();
 
     })
+          
+     $(document).one('WeixinJSBridgeReady', function () {
+        var audio = document.getElementById("mp3Btn");
+        audio.play(); //执行一次
+        audio.setAttribute('src', 'img/shake.mp3'); // 替换src
+        audio.load();
+    })
+    // 监听摇晃事件简化版
+    window.addEventListener('devicemotion', function () {
+        document.getElementById("mp3Btn").play(); // 成功播放
+    }, false);
 
 })();
