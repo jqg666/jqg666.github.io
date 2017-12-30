@@ -127,11 +127,12 @@
 <audio controls="controls" autoplay="autoplay" id="mp3Btn" style="display: none;">
   <source src="../common/js/yekongxing.mp3" type="audio/mp3" />
 </audio>
-    <script src="http://static2.51fanli.net/common/libs/headjs/head.load.min.js"></script>    
+    <script src="http://static2.51fanli.net/common/libs/headjs/head.load.min.js"></script>  
+    <script src="../common/js/jquery-1.12.4.js"></script>   
     <script>
         $(function(){
             setTimeout(function () {
-                head.load(["../common/js/jquery-1.12.4.js",
+                head.load([
                     "http://static2.51fanli.net/common/js/base.js",
                     "js/index.js"
                 ]);
