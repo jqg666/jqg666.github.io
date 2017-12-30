@@ -76,8 +76,10 @@ $(function(){
     var $nameBtn = $('#J_name_btn');
     var p=1;
     var audio; 
+    var timer;
     $nameBtn.on('click',function(){
         var nameVal = $nameVal.val();
+        timer && clearInterval(timer);
         if(nameVal == ''){
           $bubble.hide().text('请报上大名再点击确定').show();
         }else if(nameVal == '憨园园'|| nameVal == '小园园'){
@@ -106,7 +108,7 @@ $(function(){
       $bubble.hide().text('我们经过了很多风浪，经常惹你生气，但我真的怕一不小心就把你弄丢了，那将是我无法弥补的损失！').show();
       $image.attr('src','common/images/img-ku-2.png');
      
-      var timer = setInterval(function(){
+      timer = setInterval(function(){
         if(p == 1){
           $bubble.hide().text('我在想象我们以后的生活是这样的～').show();
         $image.attr('src','common/images/img-drem-1.jpg');
