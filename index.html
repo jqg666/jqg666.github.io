@@ -73,12 +73,14 @@ $(function(){
     var $nameVal=$('#J_name_val');
     var $nameBtn = $('#J_name_btn');
     var p=1;
+    var audio; 
     $nameBtn.on('click',function(){
-      var audio = document.getElementById('mp3Btn'); audio.play();
         var nameVal = $nameVal.val();
         if(nameVal == ''){
           $bubble.hide().text('请报上大名再点击确定').show();
         }else if(nameVal == '憨园园'|| nameVal == '小园园'){
+          audio = document.getElementById('mp3Btn');
+          audio.play();
           $bubble.hide().text('园，真的是你呀，你知道吗？我等你等的好辛苦！').show();
           $image.attr('src','common/images/img-ku-1.png');
           setTimeout(function(){
@@ -132,11 +134,19 @@ $(function(){
     }
 
     $(document).one('WeixinJSBridgeReady', function () {
-        var audio = document.getElementById("mp3Btn");
+        audio = document.getElementById("mp3Btn");
         audio.play(); //执行一次
         audio.setAttribute('src', 'common/js/duola.aac'); // 替换src
         audio.load();
     })
+
+    document.addEventListener('DOMContentLoaded', function () { 
+        function audioAutoPlay() { 
+          audio = document.getElementById('mp3Btn'); 
+          audio.play();
+         } 
+        audioAutoPlay(); 
+    });
 
 
 })
