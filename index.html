@@ -1,24 +1,136 @@
+<!DOCTYPE html>
 <html>
-<head>
-<title>1314</title>
+
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>小仙女</title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+      <script>
+          (function(win, doc) {
+      
+              var evt = 'onorientationchange' in win ? 'orientationchange' : 'resize';
+              var timer = null;
+              var ua = navigator.userAgent.toLowerCase();
+              var isIos = /ip(hone|od|ad)/i.test(ua);
+              var remwidth = 750;
+      
+              function setFontSize() {
+                  var docEl = doc.documentElement;
+                  var winWidth = docEl.getBoundingClientRect().width;
+                  var originFontSize;
+                  var definedFontSize = (winWidth / remwidth) * 100;
+      
+                  docEl.setAttribute('data-screenwidth', winWidth);
+                  docEl.style.fontSize = definedFontSize + 'px';
+                  originFontSize = parseFloat(window.getComputedStyle(docEl, null).getPropertyValue("font-size"));
+      
+                  if (!isIos && definedFontSize != originFontSize) {
+                      docEl.style.fontSize = (definedFontSize / originFontSize) * definedFontSize + 'px';
+                  }
+              }
+              win.addEventListener(evt, function() {
+                  clearTimeout(timer);
+                  timer = setTimeout(setFontSize, 300);
+              }, false);
+      
+      
+              win.addEventListener("pageshow", function(e) {
+                  if (e.persisted) {
+                      clearTimeout(timer);
+                      timer = setTimeout(setFontSize, 300);
+                  }
+              }, false);
+      
+              setFontSize();
+      
+          }(window, document));
+          </script>
+      <link rel="stylesheet" href="http://static2.51fanli.net/webapp/css/base.css">
+      <link rel="stylesheet" href="common/css/index.css">
+      <script src="myfairy/js/jquery-1.12.4.js"></script>
 <style>
-  
-  .welcom {  
-    display: inline-block;
-    width:100%;
-    text-align:center;
-    color: green;
-    font-size: 40px;
-    font-family: '微软雅黑';
-    background-image: -webkit-gradient(linear, 0 0, 0 bottom, from(rgba(0, 128, 0, 1)), to(rgba(51, 51, 51, 1)));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-}  
-  .gua-btn{display: block; margin:40px auto; width: 100px; height:50px; background:red; font-size:20px; line-height:50px; text-align:center;}
-</style>
+   
+  </style>
 </head>
 <body>
-<div class="welcom">老二，你个傻吊欢迎来到我们的博客！</div>
-<a href="guaguale/index.html" class="gua-btn"></a>
+  <div class="welcom">欢迎来到我们的空间！</div>
+  <div class="input-box">
+    <input id="J_name_val" class="name-input" placeholder="请报上大名" type="text" >
+    <span id="J_name_btn" class="name-btn">确定</span>
+  </div>
+  <div id="J_img_box" class="img-box">
+  <img id="J_img_1" src="common/images/img-1.png" alt="">  
+  <span id="J_bubble" class="bubble">您好，在上方输入我平时对你的称呼！并点击确定</span>
+  </div>
 </body>
+<script>
+    
+$(function(){
+    var $image=$('#J_img_1');
+    var $bubble=$('#J_bubble');
+    var $nameVal=$('#J_name_val');
+    var $nameBtn = $('#J_name_btn');
+    var p=1;
+    $nameBtn.on('click',function(){
+        var nameVal = $nameVal.val();
+        if(nameVal == ''){
+          $bubble.hide().text('请报上大名再点击确定').show();
+        }else if(nameVal == '憨园园'|| nameVal == '小园园'){
+          $bubble.hide().text('园，真的是你呀，你知道吗？我等你等的好辛苦！').show();
+          $image.attr('src','common/images/img-ku-1.png');
+          setTimeout(function(){
+            fairyBind();
+          }, 5000);
+        } else if(nameVal == '老二'){
+          $bubble.hide().text('哈哈，老二，你个傻屌，现在功能还没完善，等后续功能完善了我通知你').show();
+          $image.attr('src','common/images/img-2.png');
+        } else if(nameVal == '二园'){
+          $bubble.hide().text('哦，那我开心的时候，喜欢叫你什么呐。重新输入确定下！').show();
+          $image.attr('src','common/images/img-2.png');
+        }else{
+          $bubble.hide().text('你应该第一次来我空间吧，等我完善功能后再来吧！到时候我们就是老朋友了！').show();
+          $image.attr('src','common/images/img-2.png');
+        }
+
+    })
+
+
+    function fairyBind(){
+      $bubble.hide().text('我们经过了很多风浪，经常惹你生气，但我真的怕一不小心就把你弄丢了，那将是我无法弥补的损失！').show();
+      $image.attr('src','common/images/img-ku-2.png');
+     
+      var timer = setInterval(function(){
+        if(p == 1){
+          $bubble.hide().text('我在想象我们以后的生活是这样的～').show();
+        $image.attr('src','common/images/img-drem-1.jpg');
+        } else if(p == 2){
+          $bubble.hide().text('或者是这样的').show();
+          $image.attr('src','common/images/img-drem-2.jpg');
+        } else if(p == 3){
+          $bubble.hide().text('今天你来到我们的空间，我很开心').show();
+          $image.attr('src','common/images/img-ku-2.png');
+        }else if(p == 4){
+          $bubble.hide().text('去年中秋节发你的相册你说能不能在ipd上放，当时不行。我改装了下，现在可以在页面打开了。').show();
+          $image.attr('src','common/images/img-end.png');
+        }else if(p == 5){
+          $bubble.hide().text('还有些bug我会后期修，先去看一下吧！').show();
+          $image.attr('src','common/images/img-end.png');
+        }else if(p >=6 ){
+          clearInterval(timer);
+          setTimeout(function(){
+            window.location.href = 'myfairy/index.html'
+          }, 1000);
+        }
+
+        p++;
+      },6000)
+
+
+    }
+
+
+})
+
+</script>
+
 </html>
