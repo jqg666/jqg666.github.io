@@ -134,18 +134,6 @@
                     "http://static2.51fanli.net/common/js/base.js",
                     "js/index.js"
                 ]);
-             
- $(document).one('WeixinJSBridgeReady', function () {
-    var audio = document.getElementById("mp3Btn");
-    audio.play(); //执行一次
-    audio.setAttribute('src', 'img/shake.mp3'); // 替换src
-    audio.load();
-})
-// 监听摇晃事件简化版
-              document.getElementById("mp3Btn").play(); 
-window.addEventListener('devicemotion', function () {
-    document.getElementById("mp3Btn").play(); // 成功播放
-}, false);
 
             }, 10);
 
