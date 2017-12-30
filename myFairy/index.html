@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>小仙女</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+        <script>
+                (function(win, doc) {
+            
+                    var evt = 'onorientationchange' in win ? 'orientationchange' : 'resize';
+                    var timer = null;
+                    var ua = navigator.userAgent.toLowerCase();
+                    var isIos = /ip(hone|od|ad)/i.test(ua);
+                    var remwidth = 750;
+            
+                    function setFontSize() {
+                        var docEl = doc.documentElement;
+                        var winWidth = docEl.getBoundingClientRect().width;
+                        var originFontSize;
+                        var definedFontSize = (winWidth / remwidth) * 100;
+            
+                        docEl.setAttribute('data-screenwidth', winWidth);
+                        docEl.style.fontSize = definedFontSize + 'px';
+                        originFontSize = parseFloat(window.getComputedStyle(docEl, null).getPropertyValue("font-size"));
+            
+                        if (!isIos && definedFontSize != originFontSize) {
+                            docEl.style.fontSize = (definedFontSize / originFontSize) * definedFontSize + 'px';
+                        }
+                    }
+                    win.addEventListener(evt, function() {
+                        clearTimeout(timer);
+                        timer = setTimeout(setFontSize, 300);
+                    }, false);
+            
+            
+                    win.addEventListener("pageshow", function(e) {
+                        if (e.persisted) {
+                            clearTimeout(timer);
+                            timer = setTimeout(setFontSize, 300);
+                        }
+                    }, false);
+            
+                    setFontSize();
+            
+                }(window, document));
+                </script>
+        <link rel="stylesheet" href="http://static2.51fanli.net/webapp/css/base.css">
+        <link rel="stylesheet" href="css/index.css">
+    </head>
+<body>
+  
+      <!-- 房間-->
+      <div class="room-father ">
+        <div class="room1"></div>
+        <div class="room2"></div>
+        <div class="room3"></div>
+        <div class="room4"></div>
+         <!--    三個字開始-->
+    <div class="love-box fui-grid">
+        <ul class="love-items love-gg fui-span1">
+            <li class="love-item">憨</li>
+            <li class="love-item">我</li>
+            <li class="love-item">爱</li>
+            <li class="love-item">你</li>
+        </ul>
+        <ul class="love-items love-gg fui-span1">
+            <li class="love-item">园</li>
+            <li class="love-item">我</li>
+            <li class="love-item">爱</li>
+            <li class="love-item">你</li>
+        </ul>
+        <ul class="love-items love-gg fui-span1">
+            <li class="love-item">园</li>
+            <li class="love-item">我</li>
+            <li class="love-item">爱</li>
+            <li class="love-item">你</li>
+        </ul>
+    </div>
+    <!--   三個字結束-->
+    </div>
+
+    
+    <!--       跑馬燈部分-->
+    <div class="box-pao-father">
+        <div class="box-pao gg">
+            <div class="p-item"></div>
+            <div class="p-item"></div>
+            <div class="p-item"></div>
+            <div class="p-item"></div>
+            <div class="p-item"></div>
+            <div class="p-item"></div>
+            <div class="p-item"></div>
+            <div class="p-item"></div>
+            <div class="p-item"></div>
+            <div class="p-item"></div>
+            <div class="p-item"></div>
+            <div class="p-item"></div>
+        </div>
+        <div class="box1-pao gg1">
+            <div class="p-item1"></div>
+            <div class="p-item1"></div>
+            <div class="p-item1"></div>
+            <div class="p-item1"></div>
+            <div class="p-item1"></div>
+            <div class="p-item1"></div>
+            <div class="p-item1"></div>
+            <div class="p-item1"></div>
+            <div class="p-item1"></div>
+            <div class="p-item1"></div>
+            <div class="p-item1"></div>
+            <div class="p-item1"></div>
+        </div>
+    </div>
+    <!--        跑馬燈部分結束-->
+  <!--    开始星空遮盖部分-->
+  <div class="cover">
+    <img src="imgbg/starmove1.gif" class="moveimg1" alt="">
+    <img src="imgbg/xin.gif" class="moveimg2" alt="">
+     <div class="shik">
+      <span>在浩瀚的宇宙中,我们能够相遇,我是何其的幸运,我会竭尽所能用一生去守护我天空中最亮的星!</span><br>
+
+     <span class="left">---蒋庆高</span>
+     <input type="button" value="园,点这里" id='dianxia'> 
+     </div>
+                 
+ </div>
+    <script src="http://static2.51fanli.net/common/libs/headjs/head.load.min.js"></script>    
+    <script>
+         setTimeout(function () {
+                head.load(["js/jquery-1.12.4.js",
+                    "http://static2.51fanli.net/common/js/base.js",
+                    "js/index.js"
+                ]);
+            }, 10);
+
+
+    </script>
+</body>
+</html>
