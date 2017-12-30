@@ -24,7 +24,7 @@
      $(document).one('WeixinJSBridgeReady', function () {
         var audio = document.getElementById("mp3Btn");
         audio.play(); //执行一次
-        audio.setAttribute('src', '../img/yekongxing.mp3'); // 替换src
+        audio.setAttribute('src', '../common/js/yekongxing.mp3'); // 替换src
         audio.load();
     })
 
