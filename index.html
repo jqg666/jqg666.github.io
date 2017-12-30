@@ -47,12 +47,13 @@
           </script>
       <link rel="stylesheet" href="http://static2.51fanli.net/webapp/css/base.css">
       <link rel="stylesheet" href="common/css/index.css">
-      <script src="myfairy/js/jquery-1.12.4.js"></script>
+      <script src="common/js/jquery-1.12.4.js"></script>
 <style>
    
   </style>
 </head>
 <body>
+  <audio src="common/js/duola.aac" class="audio" controls="controls" autoplay="autoplay" preload id="mp3Btn"></audio>
   <div class="welcom">欢迎来到我们的空间！</div>
   <div class="input-box">
     <input id="J_name_val" class="name-input" placeholder="请报上大名" type="text" >
@@ -62,6 +63,7 @@
   <img id="J_img_1" src="common/images/img-1.png" alt="">  
   <span id="J_bubble" class="bubble">您好，在上方输入我平时对你的称呼！并点击确定</span>
   </div>
+  
 </body>
 <script>
     
@@ -72,6 +74,7 @@ $(function(){
     var $nameBtn = $('#J_name_btn');
     var p=1;
     $nameBtn.on('click',function(){
+      var audio = document.getElementById('mp3Btn'); audio.play();
         var nameVal = $nameVal.val();
         if(nameVal == ''){
           $bubble.hide().text('请报上大名再点击确定').show();
@@ -127,6 +130,13 @@ $(function(){
 
 
     }
+
+    $(document).one('WeixinJSBridgeReady', function () {
+        var audio = document.getElementById("mp3Btn");
+        audio.play(); //执行一次
+        audio.setAttribute('src', 'common/js/duola.aac'); // 替换src
+        audio.load();
+    })
 
 
 })
